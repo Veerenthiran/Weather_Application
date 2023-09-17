@@ -4,14 +4,17 @@ import { SlLocationPin } from 'react-icons/sl';
 import Header from '../components/Header';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 
 const SearchPage = ({ setQuery }) => {
   const [city, setCity] = useState('');
+  const navigate=useNavigate();
 
   const handelSearchClick = (e) => {
     if (e.key === 'Enter' && city !== '') {
       setQuery({ q: city });
+      navigate("/home");
     }
   };
 
@@ -26,6 +29,7 @@ const SearchPage = ({ setQuery }) => {
         let lon = position.coords.longitude;
 
         setQuery({ lat, lon });
+        navigate("/home");
       });
     }
   };
