@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import supabase from "../services/supabase";
 
 export async function signup({fullname,email,password}){
@@ -21,9 +22,9 @@ export async function login({ email, password }) {
     email,
     password,
   });
-
+  
   if (error) throw new Error(error.message);
-
+  
   return data;
 }
 
@@ -32,7 +33,7 @@ export async function getCurrentUser(){
   if(!session.session) return null;
 
   const{data,error}=await supabase.auth.getUser();
-  console.log(data);
+  
   if(error) throw new Error(error.message);
 
   return data?.user;

@@ -21,7 +21,7 @@ function ProtectedRoute({children}){
         <span class="sr-only">Loading...</span>
     </div>
 </div>
-    )
+    );
     
     if(isAuth)return children;
     
