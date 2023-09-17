@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 const SearchPage = ({ setQuery }) => {
@@ -14,6 +15,7 @@ const SearchPage = ({ setQuery }) => {
   const handelSearchClick = (e) => {
     if (e.key === 'Enter' && city !== '') {
       setQuery({ q: city });
+      toast.success("Location Successfully Changed");
       navigate("/home");
     }
   };
@@ -29,6 +31,7 @@ const SearchPage = ({ setQuery }) => {
         let lon = position.coords.longitude;
 
         setQuery({ lat, lon });
+        toast.success("Location Successfully Changed");
         navigate("/home");
       });
     }
